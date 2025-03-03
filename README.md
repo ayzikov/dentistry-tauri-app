@@ -1,0 +1,1 @@
+# dentistry-tauri-app
