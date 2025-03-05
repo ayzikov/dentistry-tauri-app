@@ -1,43 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
-    <script type="module" src="/src/main.ts" defer></script>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пациентов</title>
+    <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Окно со списком пациентов -->
+        <div class="patient-list">
+            <div class="patient-item" onclick="window.location.href='./src/patient/patient.html'">Иванов Иван Иванович</div>
+            <div class="patient-item">Петров Петр Петрович</div>
+            <div class="patient-item">Сидорова Анна Владимировна</div>
+            <div class="patient-item">Козлов Дмитрий Сергеевич</div>
+            <div class="patient-item">Михайлова Екатерина Андреевна</div>
+            <div class="patient-item">Новиков Алексей Викторович</div>
+            <div class="patient-item">Федорова Ольга Ивановна</div>
+            <div class="patient-item">Смирнов Александр Дмитриевич</div>
+            <div class="patient-item">Кузнецова Татьяна Павловна</div>
+            <div class="patient-item">Васильев Игорь Николаевич</div>
+            <div class="patient-item">Павлова Марина Сергеевна</div>
+            <div class="patient-item">Григорьев Владимир Алексеевич</div>
+            <div class="patient-item">Белова Анна Дмитриевна</div>
+            <div class="patient-item">Тихонов Сергей Владимирович</div>
+            <div class="patient-item">Орлова Елена Викторовна</div>
+        </div>
 
-  <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
-
-      <div class="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/src/assets/vite.svg" class="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img
-            src="/src/assets/tauri.svg"
-            class="logo tauri"
-            alt="Tauri logo"
-          />
-        </a>
-        <a href="https://www.typescriptlang.org/docs" target="_blank">
-          <img
-            src="/src/assets/typescript.svg"
-            class="logo typescript"
-            alt="typescript logo"
-          />
-        </a>
-      </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
-
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
-    </main>
-  </body>
+        <!-- Поле для поиска -->
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Поиск пациента...">
+        </div>
+    </div>
+</body>
 </html>
