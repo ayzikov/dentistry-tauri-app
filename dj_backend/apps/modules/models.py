@@ -37,7 +37,7 @@ class IndexCPU(BaseIndexModel):
     pass
 
 
-class TeethLettersModel(BaseModel):
+class TeethFormulaModel(BaseModel):
     """ Модель зубов с буквами """
     teeth = models.JSONField(default={"t_11": " ", "t_12": " ", "t_13": " ", "t_14": " ", "t_15": " ", "t_16": " ",
                                       "t_17": " ", "t_18": " ", "t_21": " ", "t_22": " ", "t_23": " ", "t_24": " ",
