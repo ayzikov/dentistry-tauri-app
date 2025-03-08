@@ -50,4 +50,4 @@ class TeethFormulaModel(BaseModel):
 
 class AppointmentPhoto(BaseModel):
     """ Фотографии с приема """
-    photo = models.ImageField(verbose_name="фотография с приема")
+    image = models.ImageField(verbose_name="фотография с приема")

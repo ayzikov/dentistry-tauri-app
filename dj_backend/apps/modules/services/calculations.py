@@ -1,4 +1,4 @@
-def calculate_ohis(teeth: dict) -> float:
+def ohis_calculate(teeth: dict) -> float:
     """
     Расчет индекса OHI-S
     :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
@@ -9,7 +9,7 @@ def calculate_ohis(teeth: dict) -> float:
     return round(res, 1)
 
 
-def calculate_pi(teeth: dict) -> float:
+def pi_calculate(teeth: dict) -> float:
     """
     Расчет индекса ПИ
     :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
@@ -20,7 +20,7 @@ def calculate_pi(teeth: dict) -> float:
     return round(res, 1)
 
 
-def calculate_pma(teeth: dict) -> float:
+def pma_calculate(teeth: dict) -> float:
     """
     Расчет индекса PMA
     :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
@@ -30,7 +30,7 @@ def calculate_pma(teeth: dict) -> float:
     return round(res, 1)
 
 
-def calculate_cpitn(teeth: dict) -> float:
+def cpitn_calculate(teeth: dict) -> float:
     """
     Расчет индекса CPITN
     :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
@@ -39,7 +39,7 @@ def calculate_cpitn(teeth: dict) -> float:
     return max(teeth.values())
 
 
-def calculate_cpu(teeth: dict) -> float:
+def cpu_calculate(teeth: dict) -> float:
     """
     Расчет индекса КПУ
     :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
