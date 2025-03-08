@@ -23,7 +23,7 @@ def get_objects_list(model_or_qs, **kwargs):
 #=======================================================================================================================
 
 # получение каждого индекса (список с индексами одного типа) для пациента
-def ohis_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> list:
+def ohis_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
     """
     :param patient_id: id пациента
     :param order_by: по умолчанию сортируется начиная с самых новых,
@@ -33,7 +33,7 @@ def ohis_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs
     return get_objects_list(models.IndexOHIS.objects.order_by(order_by), patient=patient_id)
 
 
-def pi_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> list:
+def pi_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
     """
     :param patient_id: id пациента
     :param order_by: по умолчанию сортируется начиная с самых новых,
@@ -43,7 +43,7 @@ def pi_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) 
     return get_objects_list(models.IndexPI.objects.order_by(order_by), patient=patient_id)
 
 
-def pma_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> list:
+def pma_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
     """
     :param patient_id: id пациента
     :param order_by: по умолчанию сортируется начиная с самых новых,
@@ -53,7 +53,7 @@ def pma_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs)
     return get_objects_list(models.IndexPMA.objects.order_by(order_by), patient=patient_id)
 
 
-def cpitn_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> list:
+def cpitn_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
     """
     :param patient_id: id пациента
     :param order_by: по умолчанию сортируется начиная с самых новых,
@@ -63,7 +63,7 @@ def cpitn_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwarg
     return get_objects_list(models.IndexCPITN.objects.order_by(order_by), patient=patient_id)
 
 
-def cpu_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> list:
+def cpu_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
     """
     :param patient_id: id пациента
     :param order_by: по умолчанию сортируется начиная с самых новых,
@@ -71,11 +71,31 @@ def cpu_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs)
     order_by="value" - сортировка по значению
     """
     return get_objects_list(models.IndexCPU.objects.order_by(order_by), patient=patient_id)
+
+
+def teeth_formulas_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
+    """
+    :param patient_id: id пациента
+    :param order_by: по умолчанию сортируется начиная с самых новых,
+    другие варианты сортировки:
+    order_by="value" - сортировка по значению
+    """
+    return get_objects_list(models.TeethFormulaModel.objects.order_by(order_by), patient=patient_id)
+
+
+def appointment_photos_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> list:
+    """
+    :param patient_id: id пациента
+    :param order_by: по умолчанию сортируется начиная с самых новых,
+    другие варианты сортировки:
+    order_by="value" - сортировка по значению
+    """
+    return get_objects_list(models.AppointmentPhoto.objects.order_by(order_by), patient=patient_id)
 #=======================================================================================================================
 
 
 # получение списка всех индексов для определенного пациента
-def list_all_indexes_get_list(patient_id: int, order_by: str = "-datetime", **kwargs) -> dict:
+def list_all_indexes_get_list(patient_id: int, order_by: str = "-date", **kwargs) -> dict:
     pass
 # получение списка всех челюстей с буквами определенного пациента
 

@@ -4,7 +4,8 @@ from django.db import models
 class BaseModel(models.Model):
     """ Базовый класс для всех модулей """
     patient = models.ForeignKey(to="apps.patients.Patient", on_delete=models.CASCADE)
-    datetime = models.DateTimeField(auto_now_add=True, verbose_name="дата и время записи")
+    date = models.DateField(auto_now_add=True, verbose_name="дата записи")
+    time = models.TimeField(auto_now_add=True, verbose_name="время записи")
 
 
 class BaseIndexModel(BaseModel):
