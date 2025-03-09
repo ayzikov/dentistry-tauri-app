@@ -1,5 +1,7 @@
 # base
 # installed
+from django.urls import reverse
+from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -30,4 +32,6 @@ class OHISListCreateView(APIView):
         teeth = serializer.validated_data.get("teeth", None)
         db.ohis_create(teeth, patient_id)
 
-        return Response("Успешный успех", status=status.HTTP_201_CREATED)
+        # делаем редирект на получение списка индексов OHIS
+        redirect_url = reverse("modules:ohis:list_create", args=[patient_id])
+        return redirect(redirect_url)

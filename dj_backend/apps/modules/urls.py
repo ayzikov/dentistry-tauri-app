@@ -11,7 +11,7 @@ ohis_patterns = [
 
 
 urlpatterns = [
-    path('<int:patient_id>/ohis/', include((ohis_patterns, 'ohis'))),
+    path('patient/<int:patient_id>/ohis/', include((ohis_patterns, 'ohis'))),
 ]
 
 
