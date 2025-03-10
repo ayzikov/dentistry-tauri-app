@@ -4,7 +4,7 @@ from django.db.models import Model
 # local
 from apps.modules import models
 from apps.modules.services import calculations
-from apps.modules.services import db
+from services import db
 
 
 # OHIS

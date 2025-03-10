@@ -10,8 +10,7 @@ from apps.modules import models
 from apps.modules.services import factories_tests
 from apps.modules.services import calculations
 from apps.modules.services import crud
-from apps.modules.services import db
-
+from services import db
 
 
 class IndexesViewsTest(APITestCase):
