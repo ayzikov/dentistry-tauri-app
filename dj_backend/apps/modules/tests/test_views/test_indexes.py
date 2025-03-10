@@ -9,7 +9,7 @@ from rest_framework.test import APITestCase
 from apps.modules import models
 from apps.modules.services import factories_tests
 from apps.modules.services import calculations
-from apps.modules.services import selectors
+from apps.modules.services import db
 
 
 
@@ -31,7 +31,7 @@ class ProviderViewsTest(APITestCase):
         # проверка редиректа
         self.assertEqual(create_response.status_code, status.HTTP_302_FOUND)
         # проверка создания индекса, вычисленного значения и даты
-        index_obj = selectors.get_object(models.IndexOHIS, id=1)
+        index_obj = db.get_object(models.IndexOHIS, id=1)
         index_value = index_obj.value
         index_date = index_obj.date
 

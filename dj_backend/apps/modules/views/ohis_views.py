@@ -8,8 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 # local
 from apps.modules import serializers
-from apps.modules.services import db
-from apps.modules.services import selectors
+from apps.modules.services import crud
 
 
 class OHISListCreateView(APIView):
@@ -17,7 +16,7 @@ class OHISListCreateView(APIView):
         """
         Получение списка
         """
-        list_indexes = selectors.ohis_indexes_get_list(patient_id)
+        list_indexes = crud.ohis_indexes_get_list(patient_id)
         data = serializers.IndexOutputDetailSerializer(data=list_indexes, many=True).data
 
         return Response(data, status=status.HTTP_200_OK)
@@ -30,7 +29,7 @@ class OHISListCreateView(APIView):
         serializer.is_valid(raise_exception=True)
 
         teeth = serializer.validated_data.get("teeth", None)
-        db.ohis_create(teeth, patient_id)
+        crud.ohis_create(teeth, patient_id)
 
         # делаем редирект на получение списка индексов OHIS
         redirect_url = reverse("modules:ohis:list_create", args=[patient_id])
