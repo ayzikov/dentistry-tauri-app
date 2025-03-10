@@ -14,7 +14,7 @@ def ohis_indexes_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.IndexOHIS, patient=patient_id)
+    return db.get_objects_list(models.IndexOHIS, patient_id=patient_id)
 
 
 def ohis_create(teeth: dict, patient_id: int) -> Model:
@@ -35,7 +35,7 @@ def pi_indexes_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.IndexPI, patient=patient_id)
+    return db.get_objects_list(models.IndexPI, patient_id=patient_id)
 
 
 def pi_create(teeth: dict, patient_id: int) -> Model:
@@ -46,7 +46,7 @@ def pi_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
     index = calculations.pi_calculate(teeth)
-    return db.create_object(models.IndexPI, patient=patient_id, value=index)
+    return db.create_object(models.IndexPI, patient_id=patient_id, value=index)
 
 
 # PMA
@@ -56,7 +56,7 @@ def pma_indexes_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.IndexPMA, patient=patient_id)
+    return db.get_objects_list(models.IndexPMA, patient_id=patient_id)
 
 
 def pma_create(teeth: dict, patient_id: int) -> Model:
@@ -67,7 +67,7 @@ def pma_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
     index = calculations.pma_calculate(teeth)
-    return db.create_object(models.IndexPMA, patient=patient_id, value=index)
+    return db.create_object(models.IndexPMA, patient_id=patient_id, value=index)
 
 
 # CPITN
@@ -77,7 +77,7 @@ def cpitn_indexes_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.IndexCPITN, patient=patient_id)
+    return db.get_objects_list(models.IndexCPITN, patient_id=patient_id)
 
 
 def cpitn_create(teeth: dict, patient_id: int) -> Model:
@@ -88,7 +88,7 @@ def cpitn_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
     index = calculations.cpitn_calculate(teeth)
-    return db.create_object(models.IndexCPITN, patient=patient_id, value=index)
+    return db.create_object(models.IndexCPITN, patient_id=patient_id, value=index)
 
 
 # CPU
@@ -98,7 +98,7 @@ def cpu_indexes_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.IndexCPU, patient=patient_id)
+    return db.get_objects_list(models.IndexCPU, patient_id=patient_id)
 
 
 def cpu_create(teeth: dict, patient_id: int) -> Model:
@@ -109,7 +109,7 @@ def cpu_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
     index = calculations.cpu_calculate(teeth)
-    return db.create_object(models.IndexCPU, patient=patient_id, value=index)
+    return db.create_object(models.IndexCPU, patient_id=patient_id, value=index)
 
 
 # TEETH FORMULA
@@ -119,7 +119,7 @@ def teeth_formulas_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.TeethFormulaModel, patient=patient_id)
+    return db.get_objects_list(models.TeethFormulaModel, patient_id=patient_id)
 
 
 def teeth_formula_create(teeth: dict, patient_id: int) -> Model:
@@ -129,7 +129,7 @@ def teeth_formula_create(teeth: dict, patient_id: int) -> Model:
     :param patient_id: id пациента
     :return: Созданный объект
     """
-    return db.create_object(models.TeethFormulaModel, patient=patient_id, teeth=teeth)
+    return db.create_object(models.TeethFormulaModel, patient_id=patient_id, teeth=teeth)
 
 
 # IMAGE
@@ -139,7 +139,7 @@ def appointment_photos_get_list(patient_id: int, **kwargs) -> list:
     Можно передать в аргументы order_by со строковым значением сортировки.
     Например order_by="-date"
     """
-    return db.get_objects_list(models.AppointmentPhoto, patient=patient_id)
+    return db.get_objects_list(models.AppointmentPhoto, patient_id=patient_id)
 
 
 def appointment_photo_create(image, patient_id: int) -> Model:
@@ -149,4 +149,4 @@ def appointment_photo_create(image, patient_id: int) -> Model:
     :param patient_id: id пациента
     :return: Созданный объект
     """
-    return db.create_object(models.AppointmentPhoto, patient=patient_id, image=image)
+    return db.create_object(models.AppointmentPhoto, patient_id=patient_id, image=image)

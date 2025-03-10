@@ -14,3 +14,14 @@ class IndexOutputDetailSerializer(serializers.ModelSerializer):
 
 class IndexInputSerializer(serializers.Serializer):
     teeth = serializers.JSONField()
+
+
+# TEETH FORMULA
+class TeethFormulaOutputDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.TeethFormulaModel
+        fields = "__all__"
+
+
+class TeethFormulaInputSerializer(serializers.Serializer):
+    teeth = serializers.JSONField()
