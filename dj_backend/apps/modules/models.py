@@ -1,16 +1,20 @@
+# base
+# installed
 from django.db import models
-
+# local
+# from apps.modules.services.models_functions import get_teeth_dict
+from apps.modules.services.models_functions import get_teeth_dict
 
 class BaseModel(models.Model):
     """ Базовый класс для всех модулей """
-    patient = models.ForeignKey(to="apps.patients.Patient", on_delete=models.CASCADE)
+    patient = models.ForeignKey(to="patients.Patient", on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True, verbose_name="дата записи")
     time = models.TimeField(auto_now_add=True, verbose_name="время записи")
 
 
 class BaseIndexModel(BaseModel):
     """ Базовый класс для индексов """
-    value = models.IntegerField(verbose_name="результат вычисления индекса")
+    value = models.FloatField(verbose_name="результат вычисления индекса")
 
 
 class IndexOHIS(BaseIndexModel):
@@ -40,12 +44,7 @@ class IndexCPU(BaseIndexModel):
 
 class TeethFormulaModel(BaseModel):
     """ Модель зубов с буквами """
-    teeth = models.JSONField(default={"t_11": " ", "t_12": " ", "t_13": " ", "t_14": " ", "t_15": " ", "t_16": " ",
-                                      "t_17": " ", "t_18": " ", "t_21": " ", "t_22": " ", "t_23": " ", "t_24": " ",
-                                      "t_25": " ", "t_26": " ", "t_27": " ", "t_28": " ", "t_31": " ", "t_32": " ",
-                                      "t_33": " ", "t_34": " ", "t_35": " ", "t_36": " ", "t_37": " ", "t_38": " ",
-                                      "t_41": " ", "t_42": " ", "t_43": " ", "t_44": " ", "t_45": " ", "t_46": " ",
-                                      "t_47": " ", "t_48": " ", }, verbose_name="json с буквой каждого зуба")
+    teeth = models.JSONField(default=get_teeth_dict, verbose_name="json с буквой каждого зуба")
 
 
 class AppointmentPhoto(BaseModel):

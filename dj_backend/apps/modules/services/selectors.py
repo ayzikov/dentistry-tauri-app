@@ -3,7 +3,7 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 # local
-from dj_backend.apps.modules import models
+from apps.modules import models
 
 
 def get_object(model_or_qs, **kwargs):

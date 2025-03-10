@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     # installed
 
     # created
-    "apps.modules"
+    "apps.modules",
+    "apps.patients"
 ]
 
 

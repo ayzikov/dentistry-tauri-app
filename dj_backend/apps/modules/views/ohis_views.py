@@ -7,9 +7,9 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 # local
-from dj_backend.apps.modules import serializers
-from dj_backend.apps.modules.services import db
-from dj_backend.apps.modules.services import selectors
+from apps.modules import serializers
+from apps.modules.services import db
+from apps.modules.services import selectors
 
 
 class OHISListCreateView(APIView):
@@ -26,7 +26,7 @@ class OHISListCreateView(APIView):
         """
         Создание
         """
-        serializer = serializers.IndexInputSerializer(request.data)
+        serializer = serializers.IndexInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         teeth = serializer.validated_data.get("teeth", None)

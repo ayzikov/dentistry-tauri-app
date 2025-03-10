@@ -2,7 +2,7 @@
 # installed
 from rest_framework import serializers
 # local
-from dj_backend.apps.modules import models
+from apps.modules import models
 
 
 # INDEXES
@@ -13,4 +13,4 @@ class IndexOutputDetailSerializer(serializers.ModelSerializer):
 
 
 class IndexInputSerializer(serializers.Serializer):
-    teeth = serializers.JSONField
+    teeth = serializers.JSONField()

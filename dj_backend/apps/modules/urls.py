@@ -2,7 +2,7 @@
 # installed
 from django.urls import path, include
 # local
-from dj_backend.apps.modules.views import ohis_views
+from apps.modules.views import ohis_views
 
 
 ohis_patterns = [

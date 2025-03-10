@@ -3,8 +3,8 @@
 from django.core.exceptions import ValidationError
 from django.db.models import Model
 # local
-from dj_backend.apps.modules import models
-from dj_backend.apps.modules.services import calculations
+from apps.modules import models
+from apps.modules.services import calculations
 
 
 def create_object(model, **kwargs) -> Model:
@@ -54,7 +54,7 @@ def ohis_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
     index = calculations.ohis_calculate(teeth)
-    return create_object(models.IndexOHIS, patient=patient_id, value=index)
+    return create_object(models.IndexOHIS, patient_id=patient_id, value=index)
 
 
 def pi_create(teeth: dict, patient_id: int) -> Model:
