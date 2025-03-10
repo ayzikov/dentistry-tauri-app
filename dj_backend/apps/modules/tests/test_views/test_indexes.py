@@ -9,6 +9,7 @@ from rest_framework.test import APITestCase
 from apps.modules import models
 from apps.modules.services import factories_tests
 from apps.modules.services import calculations
+from apps.modules.services import crud
 from apps.modules.services import db
 
 
@@ -32,6 +33,7 @@ class ProviderViewsTest(APITestCase):
         self.assertEqual(create_response.status_code, status.HTTP_302_FOUND)
         # проверка создания индекса, вычисленного значения и даты
         index_obj = db.get_object(models.IndexOHIS, id=1)
+
         index_value = index_obj.value
         index_date = index_obj.date
 
@@ -40,6 +42,15 @@ class ProviderViewsTest(APITestCase):
 
         self.assertEqual(value, index_value)
         self.assertEqual(now_date, index_date)
+
+        # проверка эндпоинта получения списка индексов
+        get_list_response = self.client.get(
+            path=self.list_create_url
+        )
+
+        self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
+        db_list_indexes = crud.ohis_indexes_get_list(patient_id=1)
+        self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 
 # python manage.py test apps.modules.tests.test_views.test_indexes.ProviderViewsTest

@@ -17,7 +17,7 @@ class OHISListCreateView(APIView):
         Получение списка
         """
         list_indexes = crud.ohis_indexes_get_list(patient_id)
-        data = serializers.IndexOutputDetailSerializer(data=list_indexes, many=True).data
+        data = serializers.IndexOutputDetailSerializer(instance=list_indexes, many=True).data
 
         return Response(data, status=status.HTTP_200_OK)
 
