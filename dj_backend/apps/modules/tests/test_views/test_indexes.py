@@ -7,10 +7,9 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 # local
 from apps.modules import models
-from apps.modules.services import factories_tests
 from apps.modules.services import calculations
 from apps.modules.services import crud
-from services import db
+from services import db, factories_tests
 
 
 class IndexesViewsTest(APITestCase):
