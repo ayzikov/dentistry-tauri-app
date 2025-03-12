@@ -16,7 +16,7 @@ class CPITNListCreateView(APIView):
         """
         Получение списка
         """
-        list_indexes = crud.cpitn_indexes_get_list(patient_id)
+        list_indexes = crud.indexes_get_list(patient_id, index_name="cpitn")
         data = serializers.IndexOutputDetailSerializer(instance=list_indexes, many=True).data
 
         return Response(data, status=status.HTTP_200_OK)

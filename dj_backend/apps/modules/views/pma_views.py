@@ -16,7 +16,7 @@ class PMAListCreateView(APIView):
         """
         Получение списка
         """
-        list_indexes = crud.pma_indexes_get_list(patient_id)
+        list_indexes = crud.indexes_get_list(patient_id, index_name="pma")
         data = serializers.IndexOutputDetailSerializer(instance=list_indexes, many=True).data
 
         return Response(data, status=status.HTTP_200_OK)

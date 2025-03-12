@@ -52,7 +52,7 @@ class IndexesViewsTest(APITestCase):
         )
 
         self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
-        db_list_indexes = crud.ohis_indexes_get_list(patient_id=1)
+        db_list_indexes = crud.indexes_get_list(patient_id=1, index_name="ohis")
         self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 
@@ -83,7 +83,7 @@ class IndexesViewsTest(APITestCase):
         )
 
         self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
-        db_list_indexes = crud.pi_indexes_get_list(patient_id=1)
+        db_list_indexes = crud.indexes_get_list(patient_id=1, index_name="pi")
         self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 
@@ -114,7 +114,7 @@ class IndexesViewsTest(APITestCase):
         )
 
         self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
-        db_list_indexes = crud.pma_indexes_get_list(patient_id=1)
+        db_list_indexes = crud.indexes_get_list(patient_id=1, index_name="pma")
         self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 
@@ -145,7 +145,7 @@ class IndexesViewsTest(APITestCase):
         )
 
         self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
-        db_list_indexes = crud.cpitn_indexes_get_list(patient_id=1)
+        db_list_indexes = crud.indexes_get_list(patient_id=1, index_name="cpitn")
         self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 
@@ -176,7 +176,7 @@ class IndexesViewsTest(APITestCase):
         )
 
         self.assertEqual(get_list_response.status_code, status.HTTP_200_OK)
-        db_list_indexes = crud.cpu_indexes_get_list(patient_id=1)
+        db_list_indexes = crud.indexes_get_list(patient_id=1, index_name="cpu")
         self.assertEqual(len(db_list_indexes), len(get_list_response.data))
 
 

@@ -1,5 +1,6 @@
 # base
 # installed
+from django.core.exceptions import ValidationError
 from django.db.models import Model
 # local
 from apps.modules import models
@@ -7,16 +8,27 @@ from apps.modules.services import calculations
 from services import db
 
 
-# OHIS
-def ohis_indexes_get_list(patient_id: int, **kwargs) -> list:
+
+def indexes_get_list(patient_id: int, index_name: str):
     """
+    Возвращает список рассчитанных индексов для пациента.
     :param patient_id: id пациента
-    Можно передать в аргументы order_by со строковым значением сортировки.
-    Например order_by="-date"
+    :param index_name: название индекса
+    :return: список моделей индексов
     """
-    return db.get_objects_list(models.IndexOHIS, patient_id=patient_id)
 
+    # indexes_names_dict - словарь {название_индекса: модель_индекса}
+    # берется значение(модель индекса) по ключу передаваемому в параметре index_name
+    indexes_names_dict = db.get_indexes_dict()
 
+    index_model = indexes_names_dict.get(index_name.lower(), None)
+    if index_model is None:
+        raise ValidationError(f"Неверно передан параметр index_name. "
+                              f"Допустимые значения - {list(indexes_names_dict.keys())}")
+
+    return db.get_objects_list(index_model, patient_id=patient_id)
+
+# OHIS
 def ohis_create(teeth: dict, patient_id: int) -> Model:
     """
     Создание индекса OHIS
@@ -29,15 +41,6 @@ def ohis_create(teeth: dict, patient_id: int) -> Model:
 
 
 # PI
-def pi_indexes_get_list(patient_id: int, **kwargs) -> list:
-    """
-    :param patient_id: id пациента
-    Можно передать в аргументы order_by со строковым значением сортировки.
-    Например order_by="-date"
-    """
-    return db.get_objects_list(models.IndexPI, patient_id=patient_id)
-
-
 def pi_create(teeth: dict, patient_id: int) -> Model:
     """
     Создание индекса PI
@@ -50,15 +53,6 @@ def pi_create(teeth: dict, patient_id: int) -> Model:
 
 
 # PMA
-def pma_indexes_get_list(patient_id: int, **kwargs) -> list:
-    """
-    :param patient_id: id пациента
-    Можно передать в аргументы order_by со строковым значением сортировки.
-    Например order_by="-date"
-    """
-    return db.get_objects_list(models.IndexPMA, patient_id=patient_id)
-
-
 def pma_create(teeth: dict, patient_id: int) -> Model:
     """
     Создание индекса PMA
@@ -71,15 +65,6 @@ def pma_create(teeth: dict, patient_id: int) -> Model:
 
 
 # CPITN
-def cpitn_indexes_get_list(patient_id: int, **kwargs) -> list:
-    """
-    :param patient_id: id пациента
-    Можно передать в аргументы order_by со строковым значением сортировки.
-    Например order_by="-date"
-    """
-    return db.get_objects_list(models.IndexCPITN, patient_id=patient_id)
-
-
 def cpitn_create(teeth: dict, patient_id: int) -> Model:
     """
     Создание индекса CPITN
@@ -92,15 +77,6 @@ def cpitn_create(teeth: dict, patient_id: int) -> Model:
 
 
 # CPU
-def cpu_indexes_get_list(patient_id: int, **kwargs) -> list:
-    """
-    :param patient_id: id пациента
-    Можно передать в аргументы order_by со строковым значением сортировки.
-    Например order_by="-date"
-    """
-    return db.get_objects_list(models.IndexCPU, patient_id=patient_id)
-
-
 def cpu_create(teeth: dict, patient_id: int) -> Model:
     """
     Создание индекса CPU
