@@ -12,8 +12,8 @@ class BaseModel(models.Model):
     time = models.TimeField(auto_now_add=True, verbose_name="время записи")
 
     class Meta:
-        get_latest_by = ["time", "date"]
-        ordering = ["time", "date"]
+        get_latest_by = ["date", "time"]
+        ordering = ["-date", "-time"]
 
 
 class BaseIndexModel(BaseModel):
