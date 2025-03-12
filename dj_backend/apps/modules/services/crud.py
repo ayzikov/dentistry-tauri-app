@@ -5,6 +5,7 @@ from django.db.models import Model
 # local
 from apps.modules import models
 from apps.modules.services import calculations
+from apps.modules.services import models_functions
 from services import db
 
 
@@ -105,7 +106,17 @@ def teeth_formula_create(teeth: dict, patient_id: int) -> Model:
     :param patient_id: id пациента
     :return: Созданный объект
     """
-    return db.create_object(models.TeethFormulaModel, patient_id=patient_id, teeth=teeth)
+
+
+    # в словарь teeth_dict модели вставляются буквы в значения тех зубов, которые передал клиент
+    # остальные значения остаются пустыми
+    teeth_dict = models_functions.get_teeth_dict()
+    for key, value in teeth.items():
+        if key not in teeth_dict.keys():
+            raise ValidationError(f"{key} некорректный ключ")
+        teeth_dict[key] = value
+
+    return db.create_object(models.TeethFormulaModel, patient_id=patient_id, teeth=teeth_dict)
 
 
 # IMAGE
