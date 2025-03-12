@@ -5,6 +5,19 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.exceptions import ValidationError
 # local
+from apps.modules import models
+
+
+def get_indexes_dict():
+    """ Функция возвращает словарь с ключ-имя индекса: значение-модель индекса """
+    indexes_names_models_dict = {
+        "ohis": models.IndexOHIS,
+        "pi": models.IndexPI,
+        "pma": models.IndexPMA,
+        "cpitn": models.IndexCPITN,
+        "cpu": models.IndexCPU,
+    }
+    return indexes_names_models_dict
 
 
 def get_object(model, **kwargs):
@@ -29,6 +42,18 @@ def get_objects_list(model, **kwargs):
         return get_list_or_404(model, **kwargs)
     except Http404:
         return []
+
+
+def get_last_created_object(model, **kwargs) -> Model | None:
+    """
+    Функция возвращает последний созданный объект.
+    Если объектов нет, то возвращается None
+    :param model: Модель Django
+    """
+    try:
+        return model.objects.filter(**kwargs).latest()
+    except Exception:
+        return None
 
 
 def create_object(model, **kwargs) -> Model:

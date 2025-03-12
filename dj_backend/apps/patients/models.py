@@ -8,3 +8,6 @@ class Patient(models.Model):
     birthdate = models.DateField(verbose_name="дата рождения")
     other_info = models.TextField(verbose_name="общая информация")
     registration_date = models.DateField(auto_now_add=True, verbose_name="дата регистрации")
+
+    class Meta:
+        ordering = ["last_name"]

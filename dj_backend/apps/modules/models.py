@@ -11,6 +11,10 @@ class BaseModel(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="дата записи")
     time = models.TimeField(auto_now_add=True, verbose_name="время записи")
 
+    class Meta:
+        get_latest_by = ["time", "date"]
+        ordering = ["time", "date"]
+
 
 class BaseIndexModel(BaseModel):
     """ Базовый класс для индексов """
