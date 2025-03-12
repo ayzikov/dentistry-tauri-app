@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 # local
 from apps.modules import serializers
 from apps.modules.services import crud
+from apps.modules.services.api_doc import IndexAPIDoc
 
 
 class CPUListCreateView(APIView):
@@ -21,6 +22,7 @@ class CPUListCreateView(APIView):
 
         return Response(data, status=status.HTTP_200_OK)
 
+    @IndexAPIDoc.create_index
     def post(self, request: Request, patient_id: int):
         """
         Создание

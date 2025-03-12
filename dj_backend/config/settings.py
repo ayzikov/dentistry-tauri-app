@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
     # installed
     "django_extensions",
+    'drf_yasg',
 
     # created
     "apps.modules",

@@ -9,9 +9,11 @@ from rest_framework.views import APIView
 # local
 from apps.patients import serializers
 from apps.patients.services import crud
+from apps.patients.services.api_doc import PatientAPIDoc
 
 
 class PatientListCreateView(APIView):
+    @PatientAPIDoc.get_list_patients
     def get(self, request: Request):
         """ Получение списка """
 
@@ -20,6 +22,7 @@ class PatientListCreateView(APIView):
 
         return Response(data, status=status.HTTP_200_OK)
 
+    @PatientAPIDoc.create_patient
     def post(self, request: Request):
         """ Создание """
 
@@ -35,6 +38,7 @@ class PatientListCreateView(APIView):
 
 
 class PatientDetailUpdateDeleteView(APIView):
+    @PatientAPIDoc.get_detail_patient
     def get(self, request: Request, patient_id: int):
         """ Детальная информация """
 

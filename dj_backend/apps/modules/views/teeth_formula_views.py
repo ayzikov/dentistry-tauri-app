@@ -9,6 +9,8 @@ from rest_framework.views import APIView
 # local
 from apps.modules import serializers
 from apps.modules.services import crud
+from apps.modules.services.api_doc import TeethFormulaAPIDoc
+
 
 
 class TeethFormulaListCreateView(APIView):
@@ -21,6 +23,7 @@ class TeethFormulaListCreateView(APIView):
 
         return Response(data, status=status.HTTP_200_OK)
 
+    @TeethFormulaAPIDoc.create_teeth_formula
     def post(self, request: Request, patient_id: int):
         """
         Создание
