@@ -22,26 +22,22 @@ def get_indexes_dict():
 
 def get_object(model, **kwargs):
     """ Получение объекта """
-    try:
-        # если был передан параметр сортировки
-        if "order_by" in kwargs:
-            order = kwargs.get("order_by")
-            return get_object_or_404(model.objects.order_by(order), **kwargs)
-        return get_object_or_404(model, **kwargs)
-    except Http404:
-        return None
+
+    # если был передан параметр сортировки
+    if "order_by" in kwargs:
+        order = kwargs.get("order_by")
+        return get_object_or_404(model.objects.order_by(order), **kwargs)
+    return get_object_or_404(model, **kwargs)
 
 
 def get_objects_list(model, **kwargs):
     """ Получение списка объектов """
-    try:
-        # если был передан параметр сортировки
-        if "order_by" in kwargs:
-            order = kwargs.get("order_by")
-            return get_list_or_404(model.objects.order_by(order), **kwargs)
-        return get_list_or_404(model, **kwargs)
-    except Http404:
-        return []
+
+    # если был передан параметр сортировки
+    if "order_by" in kwargs:
+        order = kwargs.get("order_by")
+        return get_list_or_404(model.objects.order_by(order), **kwargs)
+    return get_list_or_404(model, **kwargs)
 
 
 def get_last_created_object(model, **kwargs) -> Model | None:
