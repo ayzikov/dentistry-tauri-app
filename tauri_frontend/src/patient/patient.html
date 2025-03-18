@@ -8,21 +8,30 @@
 </head>
 <body>
     <div class="container">
+        <!-- Кнопка "Назад" -->
+        <button id="back-button" class="back-button">Назад</button>
+
         <!-- Заголовок с ФИО -->
-        <h1 class="patient-name">Иванов Иван Иванович</h1>
+        <h1 id="patient-name" class="patient-name">Загрузка данных...</h1>
 
         <!-- Информация о пациенте -->
-        <div class="patient-info">
-            <p><strong>Дата рождения:</strong> 15.03.1985</p>
-            <p><strong>Дата регистрации:</strong> 10.10.2020</p>
+        <div id="patient-info" class="patient-info">
+            <p><strong>Дата рождения:</strong> <span id="birthdate">Загрузка...</span></p>
+            <p><strong>Дополнительная информация:</strong> <span id="other-info">Загрузка...</span></p>
         </div>
 
         <!-- Основные кнопки снизу -->
         <div class="button-group">
             <button class="action-button">OHIS</button>
+            <span id="ohis-value" class="value"></span>
             <button class="action-button">PI</button>
+            <span id="pi-value" class="value"></span>
             <button class="action-button">PMA</button>
+            <span id="pma-value" class="value"></span>
             <button class="action-button">CPITN</button>
+            <span id="cpitn-value" class="value"></span>
+            <button class="action-button">CPU</button>
+            <span id="cpu-value" class="value"></span>
         </div>
 
         <!-- Кнопки справа -->
@@ -31,5 +40,7 @@
             <button class="action-button">Фото</button>
         </div>
     </div>
+
+    <script type="module" src="patient.js"></script>
 </body>
 </html>

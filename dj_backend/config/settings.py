@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # installed
     "django_extensions",
     'drf_yasg',
+    "corsheaders",
 
     # created
     "apps.modules",
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

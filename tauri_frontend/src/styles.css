@@ -12,7 +12,7 @@ body {
 
 /* Контейнер */
 .container {
-    width: 350px; /* Увеличим ширину контейнера */
+    width: 350px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@ body {
 .patient-list {
     flex-grow: 1;
     overflow-y: auto;
-    max-height: 300px; /* Ограничение высоты для прокрутки */
+    max-height: 300px;
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
@@ -36,8 +36,8 @@ body {
     border-bottom: 1px solid #eee;
     font-size: 14px;
     color: #333;
-    transition: background-color 0.2s ease; /* Плавное изменение фона */
-    cursor: pointer; /* Курсор в виде указателя */
+    transition: background-color 0.2s ease;
+    cursor: pointer;
 }
 
 .patient-item:last-child {
@@ -46,7 +46,7 @@ body {
 
 /* Выделение строки при наведении */
 .patient-item:hover {
-    background-color: #f5f5f5; /* Светло-серый фон */
+    background-color: #f5f5f5;
 }
 
 /* Поле для поиска */
@@ -57,7 +57,7 @@ body {
 }
 
 #search-input {
-    width: calc(100% - 20px); /* Учитываем padding */
+    width: calc(100% - 20px);
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;

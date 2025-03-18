@@ -12,8 +12,8 @@ body {
 
 /* Контейнер */
 .container {
-    width: 500px; /* Увеличиваем ширину */
-    min-height: 400px; /* Увеличиваем высоту */
+    width: 500px;
+    min-height: 400px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,7 +21,27 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Отступы между элементами */
+    gap: 20px;
+}
+
+/* Кнопка "Назад" */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #007bff;
+    color: white;
 }
 
 /* Заголовок с ФИО */
@@ -43,18 +63,25 @@ body {
     margin: 10px 0;
 }
 
-/* Группа кнопок снизу */
+/* Основные кнопки снизу */
 .button-group {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Отступы между кнопками */
-    margin-top: auto; /* Прижимаем кнопки к низу */
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* Значения под кнопками */
+.value {
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
 }
 
 /* Кнопки справа */
 .side-buttons {
     position: absolute;
-    top: 120px; /* Перемещаем ниже, чтобы не накладывались на ФИО */
+    top: 120px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -73,7 +100,6 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Выделение кнопок при наведении */
 .action-button:hover {
     background-color: #007bff;
     color: white;

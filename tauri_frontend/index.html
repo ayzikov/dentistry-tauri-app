@@ -9,22 +9,8 @@
 <body>
     <div class="container">
         <!-- Окно со списком пациентов -->
-        <div class="patient-list">
-            <div class="patient-item" onclick="window.location.href='./src/patient/patient.html'">Иванов Иван Иванович</div>
-            <div class="patient-item">Петров Петр Петрович</div>
-            <div class="patient-item">Сидорова Анна Владимировна</div>
-            <div class="patient-item">Козлов Дмитрий Сергеевич</div>
-            <div class="patient-item">Михайлова Екатерина Андреевна</div>
-            <div class="patient-item">Новиков Алексей Викторович</div>
-            <div class="patient-item">Федорова Ольга Ивановна</div>
-            <div class="patient-item">Смирнов Александр Дмитриевич</div>
-            <div class="patient-item">Кузнецова Татьяна Павловна</div>
-            <div class="patient-item">Васильев Игорь Николаевич</div>
-            <div class="patient-item">Павлова Марина Сергеевна</div>
-            <div class="patient-item">Григорьев Владимир Алексеевич</div>
-            <div class="patient-item">Белова Анна Дмитриевна</div>
-            <div class="patient-item">Тихонов Сергей Владимирович</div>
-            <div class="patient-item">Орлова Елена Викторовна</div>
+        <div class="patient-list" id="patient-list">
+            <!-- Список пациентов будет загружен сюда -->
         </div>
 
         <!-- Поле для поиска -->
@@ -32,5 +18,7 @@
             <input type="text" id="search-input" placeholder="Поиск пациента...">
         </div>
     </div>
+
+    <script type="module" src="./src/main.ts"></script>
 </body>
 </html>
