@@ -56,7 +56,6 @@ function renderPatientDetails(details: PatientDetails) {
   // Отображение основной информации о пациенте
   const patientName = document.getElementById('patient-name');
   const birthdate = document.getElementById('birthdate');
-  const registrationDate = document.getElementById('registration-date');
   const otherInfo = document.getElementById('other-info');
 
   if (patientName && birthdate && otherInfo) {
@@ -65,18 +64,21 @@ function renderPatientDetails(details: PatientDetails) {
     otherInfo.textContent = patient.other_info;
   }
 
-  // Отображение значений под кнопками
-  const ohisValue = document.getElementById('ohis-value');
-  const piValue = document.getElementById('pi-value');
-  const pmaValue = document.getElementById('pma-value');
-  const cpitnValue = document.getElementById('cpitn-value');
-  const cpuValue = document.getElementById('cpu-value');
+  // Отображение значений внутри кнопок
+  const renderIndexButton = (buttonId: string, value: number | null) => {
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.innerHTML = value !== null
+        ? `${button.textContent?.trim()} <span class="index-value">${value}</span>`
+        : button.textContent || '';
+    }
+  };
 
-  if (ohisValue) ohisValue.textContent = ohis_value !== null ? ohis_value.toString() : '';
-  if (piValue) piValue.textContent = pi_value !== null ? pi_value.toString() : '';
-  if (pmaValue) pmaValue.textContent = pma_value !== null ? pma_value.toString() : '';
-  if (cpitnValue) cpitnValue.textContent = cpitn_value !== null ? cpitn_value.toString() : '';
-  if (cpuValue) cpuValue.textContent = cpu_value !== null ? cpu_value.toString() : '';
+  renderIndexButton('ohis-button', ohis_value);
+  renderIndexButton('pi-button', pi_value);
+  renderIndexButton('pma-button', pma_value);
+  renderIndexButton('cpitn-button', cpitn_value);
+  renderIndexButton('cpu-button', cpu_value);
 }
 
 // Обработчик кнопки "Назад"
@@ -85,6 +87,81 @@ function setupBackButton() {
   if (backButton) {
     backButton.addEventListener('click', () => {
       window.location.href = '../index.html'; // Возврат к главному окну
+    });
+  }
+}
+
+// Обработчик кнопки "OHIS"
+function setupOhisButton() {
+  const ohisButton = document.getElementById('ohis-button');
+  if (ohisButton) {
+    ohisButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/ohis/ohis.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+// Обработчик кнопки "PI"
+function setupPiButton() {
+  const piButton = document.getElementById('pi-button');
+  if (piButton) {
+    piButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/pi/pi.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+// Обработчик кнопки "CPITN"
+function setupCpitnButton() {
+  const cpitnButton = document.getElementById('cpitn-button');
+  if (cpitnButton) {
+    cpitnButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/cpitn/cpitn.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+// Обработчик кнопки "PMA"
+function setupPmaButton() {
+  const pmaButton = document.getElementById('pma-button');
+  if (pmaButton) {
+    pmaButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/pma/pma.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+// Обработчик кнопки "TEETH_FORMULA"
+function setupTeethFormulaButton() {
+  const teethformulaButton = document.getElementById('teeth-formula-button');
+  if (teethformulaButton) {
+    teethformulaButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/teeth-formula/teeth-formula.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
     });
   }
 }
@@ -124,6 +201,11 @@ async function main() {
   }
 
   setupBackButton();
+  setupOhisButton();
+  setupPiButton();
+  setupCpitnButton();
+  setupPmaButton();
+  setupTeethFormulaButton();
 }
 
 // Запуск при загрузке страницы

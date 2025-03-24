@@ -26,7 +26,10 @@ body {
 
 /* Кнопка "Назад" */
 .back-button {
-    position: absolute;
+    position: static;
+    order: -1;
+    align-self: flex-start;
+    margin-bottom: 5px;
     top: 10px;
     left: 10px;
     padding: 10px 20px;
@@ -55,6 +58,8 @@ body {
 /* Информация о пациенте */
 .patient-info {
     font-size: 16px;
+    max-width: 70%;
+    flex-grow: 1;
     color: #555;
     margin: 0;
 }
@@ -90,6 +95,8 @@ body {
 
 /* Общие стили для кнопок */
 .action-button {
+    display: flex;
+    flex-direction: column;
     padding: 10px 20px;
     font-size: 14px;
     color: #007bff;
@@ -100,7 +107,17 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.index-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+}
+
 .action-button:hover {
     background-color: #007bff;
+    color: white;
+}
+
+.action-button:hover .index-value {
     color: white;
 }

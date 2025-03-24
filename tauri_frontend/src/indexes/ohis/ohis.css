@@ -1,0 +1,222 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #008080;
+}
+
+.container {
+  width: 700px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.tooth-formula {
+  text-align: center;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.top-row {
+  justify-content: flex-start;
+}
+
+.bottom-row {
+  justify-content: flex-end;
+  margin-top: 80px;
+}
+
+.tooth {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tooth-svg {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.tooth-number {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  width: 100%;
+  bottom: -20px;
+}
+
+.top-row .tooth-number {
+  bottom: -20px;
+}
+
+.bottom-row .tooth-number {
+  top: -20px;
+}
+
+.tooth-value {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.line {
+  position: absolute;
+  background-color: black;
+  z-index: -1;
+}
+
+.horizontal-line {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+}
+
+.add-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+
+.selection-window {
+  display: none; /* По умолчанию окно скрыто */
+  left: 110px; /* 10px справа от зуба (100px ширина зуба + 10px) */
+  top: 0; /* На том же уровне по вертикали */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.selection-option {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.selection-option:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Основные стили для контейнера */
+.content {
+  display: flex;
+  gap: 20px; /* Расстояние между формулой зубов и историей */
+}
+
+/* Стили для блока истории расчетов */
+.history {
+  width: 200px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-title {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.history-list {
+  max-height: 400px; /* Высота списка */
+  overflow-y: auto; /* Добавляем скролл */
+}
+
+.history-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item.highlighted {
+  background-color: #e0f7fa; /* Подсветка для первого элемента */
+  font-weight: bold;
+}

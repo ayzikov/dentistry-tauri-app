@@ -59,7 +59,7 @@ function renderPatients(patients: Patient[]) {
 
     // Обработчик клика по пациенту
     patientItem.addEventListener('click', () => {
-      window.location.href = `./src/patient/patient.html?id=${patient.id}`;
+      window.location.href = `/src/patient/patient.html?id=${patient.id}`;
     });
 
     patientList.appendChild(patientItem);
