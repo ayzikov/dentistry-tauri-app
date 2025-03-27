@@ -11,8 +11,11 @@
     <!-- Кнопка "Назад" -->
     <button id="back-button" class="back-button">Назад</button>
 
-    <!-- Заголовок -->
-    <h1 class="title">OHIS</h1>
+  <!-- Заголовок -->
+  <h1 class="title">OHIS</h1>
+
+  <!-- Основной контент -->
+  <div class="main-content">
 
     <!-- Формула зубов -->
     <div class="tooth-formula">
@@ -379,17 +382,26 @@
       <div class="line vertical-line"></div>
     </div>
 
-    <!-- Кнопка "Добавить" -->
-    <button id="add-button" class="add-button">Добавить</button>
-
-    <!-- Окно выбора значения -->
-    <div id="selection-window" class="selection-window">
-      <button class="selection-option" data-value="1">1</button>
-      <button class="selection-option" data-value="2">2</button>
-      <button class="selection-option" data-value="3">3</button>
-      <button class="selection-option" data-value="remove">Убрать</button>
+    <!-- Блок истории расчетов -->
+    <div class="history">
+      <h2 class="history-title">История расчетов</h2>
+      <div class="history-list" id="history-list">
+        <!-- Сюда будут добавляться строки с данными -->
+      </div>
     </div>
   </div>
+
+  <!-- Кнопка "Добавить" -->
+  <button id="add-button" class="add-button">Рассчитать</button>
+
+  <!-- Окно выбора значения -->
+  <div id="selection-window" class="selection-window">
+    <button class="selection-option" data-value="1">1</button>
+    <button class="selection-option" data-value="2">2</button>
+    <button class="selection-option" data-value="3">3</button>
+    <button class="selection-option" data-value="remove">Убрать</button>
+  </div>
+</div>
 
   <script type="module" src="ohis.ts"></script>
 </body>
