@@ -11,6 +11,44 @@ function getPatientId(): number | null {
   return id ? parseInt(id, 10) : null;
 }
 
+// Загрузка истории расчетов
+async function fetchHistoryData(patientId: number) {
+  try {
+    const response = await fetch(API_ENDPOINTS.MODULES.PI_LIST_CREATE(patientId), {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      throw new Error('Ошибка при получении данных');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Ошибка при загрузке истории расчетов:', error);
+    return null;
+  }
+}
+
+// Отображение истории расчетов
+function renderHistory(historyData: any[]) {
+  const historyList = document.getElementById('history-list');
+  if (!historyList) return;
+
+  historyList.innerHTML = '';
+
+  historyData.forEach((item, index) => {
+    const historyItem = document.createElement('div');
+    historyItem.className = `history-item ${index === 0 ? 'highlighted' : ''}`;
+
+    const date = new Date(item.date);
+    const formattedDate = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
+
+    historyItem.textContent = `${formattedDate}: ${item.value}`;
+    historyList.appendChild(historyItem);
+  });
+}
+
 // Обработчик клика по зубу
 function setupToothClickHandlers() {
   const teeth = document.querySelectorAll('.tooth');
@@ -103,7 +141,18 @@ function setupAddButton() {
 }
 
 // Основная функция
-function main() {
+async function main() {
+  const patientId = getPatientId();
+  if (!patientId) {
+    console.error('ID пациента не найден');
+    return;
+  }
+  // Загрузка и отображение истории расчетов
+  const historyData = await fetchHistoryData(patientId);
+  if (historyData) {
+    renderHistory(historyData);
+  }
+
   setupToothClickHandlers();
   setupBackButton();
   setupAddButton();

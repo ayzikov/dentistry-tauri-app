@@ -26,14 +26,19 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 14px;
   color: #007bff;
   background-color: #fff;
   border: 1px solid #007bff;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 2;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #007bff;
+  color: white;
 }
 
 .title {
@@ -154,13 +159,19 @@ body {
 }
 
 .history-list {
-  overflow-y: auto;
+  max-height: calc(4 * 30px); /* Ограничиваем высоту до 4 строк (примерно) */
+  overflow-y: auto; /* Добавляем вертикальный скролл */
+  padding-right: 5px; /* Чтобы скролл не наезжал на текст */
 }
 
 .history-item {
   padding: 8px 5px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+  min-height: 30px; /* Фиксированная высота строки */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .history-item.highlighted {

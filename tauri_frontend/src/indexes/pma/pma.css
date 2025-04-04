@@ -10,12 +10,16 @@ body {
 }
 
 .container {
-  width: 700px;
+  width: 900px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   position: relative;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .back-button {
@@ -44,8 +48,17 @@ body {
   margin: 0 0 20px 0;
 }
 
+.main-content {
+  display: flex;
+  gap: 20px;
+  max-height: calc(90vh - 150px);
+  overflow: visible;
+  padding: 10px 0;
+}
+
 .tooth-formula {
-  text-align: center;
+  flex: 1;
+  min-width: 600px;
   position: relative;
 }
 
@@ -126,6 +139,52 @@ body {
   height: 100%;
   top: 0;
   left: 50%;
+}
+
+.history {
+  width: 250px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  max-height: calc(90vh - 150px);
+  overflow-y: auto;
+}
+
+.history-title {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 10px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  padding: 5px;
+  z-index: 1;
+}
+
+.history-list {
+  max-height: calc(4 * 30px); /* Ограничиваем высоту до 4 строк (примерно) */
+  overflow-y: auto; /* Добавляем вертикальный скролл */
+  padding-right: 5px; /* Чтобы скролл не наезжал на текст */
+}
+
+.history-item {
+  padding: 8px 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  min-height: 30px; /* Фиксированная высота строки */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.history-item.highlighted {
+  background-color: #e0f7fa;
+  font-weight: bold;
 }
 
 .add-button {
