@@ -42,8 +42,17 @@ def cpitn_calculate(teeth: dict) -> float:
 def cpu_calculate(teeth: dict) -> float:
     """
     Расчет индекса КПУ
-    :param teeth: словарь с номерами зубов и их баллами {"t_11": 2}
+    :param teeth: словарь с номерами зубов и их буквами {"t_11": ["П", "O"]}
     :return: индекс
     """
-    return round(len(teeth), 1)
+
+    # считаем количество зубов у которых одна из букв in check_list
+    index_counter = 0
+    check_list = ["С", "П", "О"]
+    for tooth_letters in teeth.values():
+        # проверяем чтобы хотя бы одна буква из tooth_letters была в check_list
+        if any(map(lambda letter: letter in check_list, tooth_letters)):
+            index_counter += 1
+
+    return index_counter
 

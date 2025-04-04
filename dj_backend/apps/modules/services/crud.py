@@ -9,7 +9,6 @@ from apps.modules.services import models_functions
 from services import db
 
 
-
 def indexes_get_list(patient_id: int, index_name: str):
     """
     Возвращает список рассчитанных индексов для пациента.
@@ -28,6 +27,7 @@ def indexes_get_list(patient_id: int, index_name: str):
                               f"Допустимые значения - {list(indexes_names_dict.keys())}")
 
     return db.get_objects_list(index_model, patient_id=patient_id)
+
 
 # OHIS
 def ohis_create(teeth: dict, patient_id: int) -> Model:
@@ -107,6 +107,8 @@ def teeth_formula_create(teeth: dict, patient_id: int) -> Model:
     :return: Созданный объект
     """
 
+    # рассчитываем CPU индекс
+    cpu_create(teeth, patient_id)
 
     # в словарь teeth_dict модели вставляются буквы в значения тех зубов, которые передал клиент
     # остальные значения остаются пустыми
