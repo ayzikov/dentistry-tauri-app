@@ -49,20 +49,34 @@ function setupToothClickHandlers() {
   teeth.forEach(tooth => {
     tooth.addEventListener('click', (event) => {
       const toothId = tooth.getAttribute('data-tooth')!;
-
-      // Получаем координаты зуба
       const toothRect = tooth.getBoundingClientRect();
 
-      // Позиционируем окно выбора в 10px справа от зуба
-      selectionWindow.style.display = 'block';
+      // Рассчитываем позицию окна
+      let posLeft = toothRect.right + 10;
+      let posTop = toothRect.top;
 
-      // Удаляем старые обработчики, чтобы избежать дублирования
+      // Проверка на выход за правый край экрана
+      if (posLeft + selectionWindow.offsetWidth > window.innerWidth) {
+        posLeft = toothRect.left - selectionWindow.offsetWidth - 10;
+      }
+
+      // Проверка на выход за нижний край экрана
+      if (posTop + selectionWindow.offsetHeight > window.innerHeight) {
+        posTop = window.innerHeight - selectionWindow.offsetHeight - 10;
+      }
+
+      // Позиционируем окно
+      selectionWindow.style.left = `${posLeft}px`;
+      selectionWindow.style.top = `${posTop}px`;
+      selectionWindow.style.display = 'flex';
+
+
+      // Обновляем обработчики
       const options = document.querySelectorAll('.selection-option');
       options.forEach(option => {
         option.replaceWith(option.cloneNode(true));
       });
 
-      // Добавляем новые обработчики
       const newOptions = document.querySelectorAll('.selection-option');
       newOptions.forEach(option => {
         option.addEventListener('click', () => {
@@ -70,14 +84,14 @@ function setupToothClickHandlers() {
           const toothValueElement = document.getElementById(`tooth${toothId}-value`) as HTMLElement;
 
           if (value === 'remove') {
-            teethValues[`t_${toothId}`] = null; // Устанавливаем значение null
+            teethValues[`t_${toothId}`] = null;
             toothValueElement.textContent = '';
           } else {
-            teethValues[`t_${toothId}`] = value; // Сохраняем значение как строку
+            const numericValue = parseInt(value!, 10);
+            teethValues[`t_${toothId}`] = numericValue;
             toothValueElement.textContent = value;
           }
 
-          // Скрываем окно выбора после выбора значения
           selectionWindow.style.display = 'none';
         });
       });
@@ -144,6 +158,17 @@ function setupAddButton() {
     }
   });
 }
+
+// Закрытие окна при клике вне области
+document.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement;
+  const selectionWindow = document.getElementById('selection-window') as HTMLElement;
+
+  // Если клик не по зубу и не по окну выбора
+  if (!target.closest('.tooth') && !target.closest('.selection-window')) {
+    selectionWindow.style.display = 'none';
+  }
+});
 
 // Основная функция
 async function main() {

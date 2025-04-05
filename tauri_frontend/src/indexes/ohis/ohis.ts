@@ -59,10 +59,25 @@ function setupToothClickHandlers() {
       const toothId = tooth.getAttribute('data-tooth')!;
       const toothRect = tooth.getBoundingClientRect();
 
-      // Позиционируем окно выбора
-      selectionWindow.style.display = 'block';
-      selectionWindow.style.left = `${toothRect.right + 10}px`;
-      selectionWindow.style.top = `${toothRect.top}px`;
+      // Рассчитываем позицию окна
+      let posLeft = toothRect.right + 10;
+      let posTop = toothRect.top;
+
+      // Проверка на выход за правый край экрана
+      if (posLeft + selectionWindow.offsetWidth > window.innerWidth) {
+        posLeft = toothRect.left - selectionWindow.offsetWidth - 10;
+      }
+
+      // Проверка на выход за нижний край экрана
+      if (posTop + selectionWindow.offsetHeight > window.innerHeight) {
+        posTop = window.innerHeight - selectionWindow.offsetHeight - 10;
+      }
+
+      // Позиционируем окно
+      selectionWindow.style.left = `${posLeft}px`;
+      selectionWindow.style.top = `${posTop}px`;
+      selectionWindow.style.display = 'flex';
+
 
       // Обновляем обработчики
       const options = document.querySelectorAll('.selection-option');
@@ -136,6 +151,17 @@ function setupAddButton() {
     }
   });
 }
+
+// Закрытие окна при клике вне области
+document.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement;
+  const selectionWindow = document.getElementById('selection-window') as HTMLElement;
+
+  // Если клик не по зубу и не по окну выбора
+  if (!target.closest('.tooth') && !target.closest('.selection-window')) {
+    selectionWindow.style.display = 'none';
+  }
+});
 
 // Основная функция
 async function main() {
