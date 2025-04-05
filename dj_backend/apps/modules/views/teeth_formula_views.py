@@ -12,7 +12,6 @@ from apps.modules.services import crud
 from apps.modules.services.api_doc import TeethFormulaAPIDoc
 
 
-
 class TeethFormulaListCreateView(APIView):
     def get(self, request: Request, patient_id: int):
         """
