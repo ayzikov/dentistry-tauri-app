@@ -29,13 +29,37 @@ async function fetchTeethFormulaData(patientId: number) {
 }
 
 // Обновление значений зубов на странице
-function updateTeethValues(teethData: Record<string, string>) {
-  Object.entries(teethData).forEach(([toothId, value]) => {
-    const toothValueElement = document.getElementById(`tooth${toothId.slice(2)}-value`) as HTMLElement;
-    if (toothValueElement) {
-      toothValueElement.textContent = value.trim() === '' ? '' : value;
-    }
-  });
+function updateTeethValues(teethData: Record<string, string | string[]>) {
+    Object.entries(teethData).forEach(([toothKey, value]) => {
+        const toothId = toothKey.slice(2); // Убираем префикс "t_"
+        const toothElement = document.getElementById(`tooth${toothId}`);
+        if (!toothElement) return;
+
+        const valuesContainer = toothElement.querySelector('.tooth-values');
+        if (!valuesContainer) return;
+
+        // Очищаем контейнер перед добавлением новых значений
+        valuesContainer.innerHTML = '';
+
+        let values: string[] = [];
+
+        // Обрабатываем разные форматы данных
+        if (typeof value === 'string') {
+            values = value.split(',')
+                .map(v => v.trim())
+                .filter(v => v !== '');
+        } else if (Array.isArray(value)) {
+            values = value.filter(v => v.trim() !== '');
+        }
+
+        // Добавляем значения в контейнер
+        values.forEach(val => {
+            const valueElement = document.createElement('div');
+            valueElement.className = 'tooth-value-item';
+            valueElement.textContent = val;
+            valuesContainer.appendChild(valueElement);
+        });
+    });
 }
 
 // Состояние выбранных значений для зубов (теперь поддерживает строки)
@@ -51,25 +75,19 @@ function setupToothClickHandlers() {
       const toothId = tooth.getAttribute('data-tooth')!;
       const toothRect = tooth.getBoundingClientRect();
 
-      // Рассчитываем позицию окна
+      // Рассчитываем позицию окна (без изменений)
       let posLeft = toothRect.right + 10;
       let posTop = toothRect.top;
-
-      // Проверка на выход за правый край экрана
       if (posLeft + selectionWindow.offsetWidth > window.innerWidth) {
         posLeft = toothRect.left - selectionWindow.offsetWidth - 10;
       }
-
-      // Проверка на выход за нижний край экрана
       if (posTop + selectionWindow.offsetHeight > window.innerHeight) {
         posTop = window.innerHeight - selectionWindow.offsetHeight - 10;
       }
 
-      // Позиционируем окно
       selectionWindow.style.left = `${posLeft}px`;
       selectionWindow.style.top = `${posTop}px`;
       selectionWindow.style.display = 'flex';
-
 
       // Обновляем обработчики
       const options = document.querySelectorAll('.selection-option');
@@ -80,19 +98,34 @@ function setupToothClickHandlers() {
       const newOptions = document.querySelectorAll('.selection-option');
       newOptions.forEach(option => {
         option.addEventListener('click', () => {
-          const value = option.getAttribute('data-value');
-          const toothValueElement = document.getElementById(`tooth${toothId}-value`) as HTMLElement;
+            const value = option.getAttribute('data-value');
+            const toothValuesContainer = tooth.querySelector('.tooth-values') as HTMLElement;
 
-          if (value === 'remove') {
-            teethValues[`t_${toothId}`] = null;
-            toothValueElement.textContent = '';
-          } else {
-            const numericValue = parseInt(value!, 10);
-            teethValues[`t_${toothId}`] = numericValue;
-            toothValueElement.textContent = value;
-          }
+            if (value === 'remove') {
+                // Полная очистка всех значений
+                teethValues[`t_${toothId}`] = [];
+                toothValuesContainer.innerHTML = '';
+            } else {
+                // Инициализация массива значений если нужно
+                if (!teethValues[`t_${toothId}`]) {
+                    teethValues[`t_${toothId}`] = [];
+                }
 
-          selectionWindow.style.display = 'none';
+                // Добавляем значение только если его еще нет
+                if (!teethValues[`t_${toothId}`].includes(value)) {
+                    teethValues[`t_${toothId}`].push(value);
+
+                    // Создаем новый элемент для значения
+                    const valueElement = document.createElement('div');
+                    valueElement.className = 'tooth-value-item';
+                    valueElement.textContent = value;
+
+                    // Добавляем в контейнер значений
+                    toothValuesContainer.appendChild(valueElement);
+                }
+            }
+
+            selectionWindow.style.display = 'none';
         });
       });
     });
@@ -112,13 +145,30 @@ function setupBackButton() {
 
 // Обработчик кнопки "Добавить"
 function setupAddButton() {
-  const addButton = document.getElementById('add-button') as HTMLElement;
-  addButton.addEventListener('click', async () => {
-    const patientId = getPatientId();
-    if (!patientId) return;
+    const addButton = document.getElementById('add-button') as HTMLElement;
+    addButton.addEventListener('click', async () => {
+        const patientId = getPatientId();
+        if (!patientId) return;
 
-    // Собираем данные со всех зубов на экране
-    const teethData: Record<string, string> = {};
+        // Собираем данные со всех зубов
+        const teethData: Record<string, string> = {};
+
+        document.querySelectorAll('.tooth').forEach(toothElement => {
+            const toothId = toothElement.getAttribute('data-tooth');
+            if (!toothId) return;
+
+            const valuesContainer = toothElement.querySelector('.tooth-values');
+            if (!valuesContainer) return;
+
+            // Собираем все значения для зуба
+            const values = Array.from(valuesContainer.children)
+                .map(item => item.textContent?.trim() || '')
+                .filter(v => v !== '');
+
+            if (values.length > 0) {
+                teethData[`t_${toothId}`] = values.join(', ');
+            }
+        });
 
     // Проходим по всем зубам и собираем их значения
     const teethElements = document.querySelectorAll('[id^="tooth"][id$="-value"]');
