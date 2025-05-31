@@ -12,6 +12,7 @@ interface PatientDetails {
     last_name: string;
     middle_name: string;
     birthdate: string;
+    registration_date: string;
     other_info: string;
   };
   ohis_value: number | null;
@@ -56,11 +57,13 @@ function renderPatientDetails(details: PatientDetails) {
   // Отображение основной информации о пациенте
   const patientName = document.getElementById('patient-name');
   const birthdate = document.getElementById('birthdate');
+  const registration_date = document.getElementById('registration_date');
   const otherInfo = document.getElementById('other-info');
 
-  if (patientName && birthdate && otherInfo) {
+  if (patientName && birthdate && otherInfo && registration_date) {
     patientName.textContent = `${patient.last_name} ${patient.first_name} ${patient.middle_name}`;
     birthdate.textContent = patient.birthdate;
+    registration_date.textContent = patient.registration_date;
     otherInfo.textContent = patient.other_info;
   }
 
@@ -177,6 +180,7 @@ async function main() {
   // Очистка данных перед загрузкой
   const patientName = document.getElementById('patient-name');
   const birthdate = document.getElementById('birthdate');
+  const registration_date = document.getElementById('registration_date');
   const otherInfo = document.getElementById('other-info');
   const ohisValue = document.getElementById('ohis-value');
   const piValue = document.getElementById('pi-value');
@@ -186,6 +190,7 @@ async function main() {
 
   if (patientName) patientName.textContent = 'Загрузка данных...';
   if (birthdate) birthdate.textContent = 'Загрузка...';
+  if (registration_date) registration_date.textContent = 'Загрузка...';
   if (otherInfo) otherInfo.textContent = 'Загрузка...';
   if (ohisValue) ohisValue.textContent = '';
   if (piValue) piValue.textContent = '';

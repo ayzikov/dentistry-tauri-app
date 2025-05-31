@@ -46,7 +46,8 @@ def patient_all_info_get(patient_id: int):
 
     # получаем объект пациента и преобразуем его данные в dict и добавляем в result_dict
     patient_obj = db.get_object(patients_models.Patient, id=patient_id)
-    patient_dict = model_to_dict(patient_obj, fields=[field.name for field in patient_obj._meta.fields])
+    patient_dict = model_to_dict(patient_obj)
+    patient_dict["registration_date"] = patient_obj.registration_date
     result_dict["patient"] = patient_dict
 
     # indexes_names_dict - словарь {название_индекса: модель_индекса}
