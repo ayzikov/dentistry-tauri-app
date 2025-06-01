@@ -90,3 +90,16 @@ async function main() {
 
 // Запуск при загрузке страницы
 document.addEventListener('DOMContentLoaded', main);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addPatientButton = document.getElementById('add-patient-button');
+
+    if (addPatientButton) {
+        addPatientButton.addEventListener('click', () => {
+            // Здесь будет логика добавления пациента
+            console.log('Кнопка "Добавить пациента" нажата');
+            // Например, открытие модального окна или переход на другую страницу
+            window.location.href = '/src/create_patient/create_patient.html'; // Замените на ваш URL
+        });
+    }
+});

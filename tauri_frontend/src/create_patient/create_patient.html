@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление пациента</title>
+    <link rel="stylesheet" href="create_patient.css">
+</head>
+<body>
+    <button class="back-button" id="back-button">Назад</button>
+
+    <div class="container">
+        <div class="header">
+            <h1>Добавление пациента</h1>
+            <p>Заполните форму для регистрации нового пациента</p>
+        </div>
+
+        <div class="form-container">
+            <form id="patient-form">
+                <div class="form-group">
+                    <label for="first_name">Имя *</label>
+                    <input type="text" id="first_name" name="first_name" required placeholder="Введите имя">
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Фамилия *</label>
+                    <input type="text" id="last_name" name="last_name" required placeholder="Введите фамилию">
+                </div>
+
+                <div class="form-group">
+                    <label for="middle_name">Отчество</label>
+                    <input type="text" id="middle_name" name="middle_name" placeholder="Введите отчество (если есть)">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Дата рождения *</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="other_info">Дополнительная информация</label>
+                    <textarea id="other_info" name="other_info" placeholder="Заметки о пациенте, история болезни и т.д."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Добавить пациента</button>
+
+                <div id="status-message" class="status-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="create_patient.ts"></script>
+</body>
+</html>
