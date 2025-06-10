@@ -10,9 +10,11 @@ gunicorn==23.0.0
 inflection==0.5.1
 packaging==24.2
 pillow==11.1.0
+psycopg==3.2.9
 python-dotenv==1.0.1
 pytz==2025.1
 PyYAML==6.0.2
 sqlparse==0.5.3
+typing_extensions==4.14.0
 tzdata==2025.1
 uritemplate==4.1.1
