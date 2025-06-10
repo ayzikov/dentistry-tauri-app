@@ -12,7 +12,7 @@
     <button id="back-button" class="back-button">Назад</button>
 
   <!-- Заголовок -->
-  <h1 class="title">OHIS</h1>
+  <h1 class="title">OHI-S</h1>
 
   <!-- Основной контент -->
   <div class="main-content">
@@ -391,11 +391,28 @@
     </div>
   </div>
 
+  <div class="explanation">
+  <h2 class="explanation-title">Критерии</h2>
+  <ul class="explanation-list">
+    <h2>Коды и критерии оценки зубного налета</h2>
+    <li><span class="index-value">0</span> - зубной налет не выявлен</li>
+    <li><span class="index-value">1</span> - мягкий зубной налет, покрывающий не более 1/3 поверхности зуба, или наличие любого количества окрашенных отложений</li>
+    <li><span class="index-value">2</span> - мягкий зубной налет, покрывающий не более 1/3, но менее 2/3 поверхности зуба</li>
+    <li><span class="index-value">3</span> - мягкий зубной налет, покрывающий более 2/3 поверхности зуба</li>
+    <h2>Коды и критерии оценки зубного камня</h2>
+    <li><span class="index-value">0</span> - зубной камень не выявлен</li>
+    <li><span class="index-value">1</span> - наддесневой зубной камень, покрывающий не более 1/3 поверхности зуба</li>
+    <li><span class="index-value">2</span> - наддесневой зубной камень, покрывающий не более 1/3, но менее 2/3 поверхности зуба, или наличие отдельных отложений поддесневого зубного камня в пришеечной области зуба</li>
+    <li><span class="index-value">3</span> - наддесневой зубной камень, покрывающий более 2/3 поверхности зуба, или значительные отложения поддесневого зубного камня в пришеечной области зуба</li>
+  </ul>
+</div>
+
   <!-- Кнопка "Добавить" -->
   <button id="add-button" class="add-button">Рассчитать</button>
 
   <!-- Окно выбора значения -->
   <div id="selection-window" class="selection-window">
+    <button class="selection-option" data-value="0">0</button>
     <button class="selection-option" data-value="1">1</button>
     <button class="selection-option" data-value="2">2</button>
     <button class="selection-option" data-value="3">3</button>

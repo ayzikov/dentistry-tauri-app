@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка фотографий</title>
+    <link rel="stylesheet" href="download_images.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Кнопка "Назад" -->
+        <button id="back-button" class="back-button">Назад</button>
+
+        <h1>Загрузка фотографий</h1>
+
+        <!-- Область для перетаскивания -->
+        <div id="drop-area" class="drop-area">
+            <p>Перетащите фотографии сюда</p>
+            <p>или</p>
+            <input type="file" id="file-input" multiple accept="image/*">
+            <button id="browse-button">Выбрать файлы</button>
+        </div>
+
+        <!-- Контейнер для предпросмотра -->
+        <div id="preview-container" class="preview-container"></div>
+
+        <!-- Кнопка "Добавить" -->
+        <button id="add-button" class="add-button">Добавить</button>
+    </div>
+
+    <script type="module" src="download_images.ts"></script>
+</body>
+</html>

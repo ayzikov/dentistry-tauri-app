@@ -4,9 +4,7 @@ from pathlib import Path
 # installed
 from dotenv import load_dotenv
 
-
 load_dotenv()
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,7 +17,6 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
 
 CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS') == 'True'
-
 
 # APPS
 INSTALLED_APPS = [
@@ -40,7 +37,6 @@ INSTALLED_APPS = [
     "apps.patients"
 ]
 
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -52,9 +48,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 ROOT_URLCONF = 'config.urls'
-
 
 TEMPLATES = [
     {
@@ -72,9 +66,7 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 DATABASES = {
     'default': {
@@ -82,7 +74,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,7 +90,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Moscow'
@@ -108,10 +98,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # STATIC
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = 'static/'
 
+# MEDIA
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

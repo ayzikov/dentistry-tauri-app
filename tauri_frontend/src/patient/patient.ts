@@ -169,6 +169,37 @@ function setupTeethFormulaButton() {
   }
 }
 
+// Обработчик кнопки "Загрузить фото"
+function setupDownPhotoButton() {
+  const photoButton = document.getElementById('down-photo-button');
+  if (photoButton) {
+    photoButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/download_images/download_images.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+// Обработчик кнопки "Фото"
+function setupPhotoButton() {
+  const photoButton = document.getElementById('photo-button');
+  if (photoButton) {
+    photoButton.addEventListener('click', () => {
+      const patientId = getPatientId();
+      if (patientId) {
+        window.location.href = `/src/indexes/view_images/view_images.html?id=${patientId}`;
+      } else {
+        console.error('ID пациента не найден');
+      }
+    });
+  }
+}
+
+
 // Основная функция
 async function main() {
   const patientId = getPatientId();
@@ -211,6 +242,8 @@ async function main() {
   setupCpitnButton();
   setupPmaButton();
   setupTeethFormulaButton();
+  setupDownPhotoButton();
+  setupPhotoButton();
 }
 
 // Запуск при загрузке страницы

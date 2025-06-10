@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000';
+export const API_BASE_URL = 'http://127.0.0.1:8000';
 
 export const API_ENDPOINTS = {
   PATIENTS: {
@@ -13,5 +13,6 @@ export const API_ENDPOINTS = {
     CPITN_LIST_CREATE: (id: number | string) => `${API_BASE_URL}/module/patient/${id}/cpitn/`,
     CPU_LIST_CREATE: (id: number | string) => `${API_BASE_URL}/module/patient/${id}/cpu/`,
     TEETH_FORMULA_LIST_CREATE: (id: number | string) => `${API_BASE_URL}/module/patient/${id}/teeth-formula/`,
+    IMAGE_LIST_CREATE: (id: number | string) => `${API_BASE_URL}/module/patient/${id}/image/`,
   },
 };

@@ -16,6 +16,8 @@
         }
       ]
     },
-    "http:default"
+    "http:default",
+    "dialog:default",
+    "fs:default"
   ]
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотографии пациента</title>
+    <link rel="stylesheet" href="view_images.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Кнопка "Назад" -->
+        <button id="back-button" class="back-button">Назад</button>
+
+        <!-- Заголовок с ФИО -->
+        <h1 id="patient-name" class="patient-name">Фотографии пациента</h1>
+
+        <!-- Контейнер для группировки фотографий по дате -->
+        <div id="photos-container"></div>
+
+        <!-- Модальное окно для полноразмерного просмотра -->
+        <div id="modal" class="modal">
+            <img id="full-image" class="full-image">
+        </div>
+    </div>
+
+    <script type="module" src="view_images.ts"></script>
+</body>
+</html>

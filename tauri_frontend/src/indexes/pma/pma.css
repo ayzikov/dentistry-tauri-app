@@ -236,3 +236,44 @@ body {
   background-color: #007bff;
   color: white;
 }
+
+.explanation {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  align-self: flex-start;
+}
+
+.explanation-title {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.explanation-list {
+  padding-left: 20px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.explanation-list li {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.index-value {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 22px;
+  margin-right: 8px;
+  font-weight: bold;
+}
+

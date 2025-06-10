@@ -25,3 +25,14 @@ class TeethFormulaOutputDetailSerializer(serializers.ModelSerializer):
 
 class TeethFormulaInputSerializer(serializers.Serializer):
     teeth = serializers.JSONField()
+
+
+# AppointmentPhoto
+class PhotoInputSerializer(serializers.Serializer):
+    image = serializers.FileField()
+
+
+class PhotoOutputSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.AppointmentPhoto
+        fields = "__all__"
